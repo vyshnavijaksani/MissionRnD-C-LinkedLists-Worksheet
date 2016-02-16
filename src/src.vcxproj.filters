@@ -30,5 +30,13 @@
     <ClCompile Include="012sllSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainLinkedLists1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FunctionHeadersLinkedLists1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
