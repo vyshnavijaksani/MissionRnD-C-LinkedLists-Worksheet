@@ -12,31 +12,14 @@ NOTES:
 */
 
 #include <stdio.h>
+#include<malloc.h>
 struct node {
 	int num;
 	struct node *next;
 };
-/*struct node *head;
-void removek(int K)
-{
-
-	struct node *temp = head;
-	if (K == 1)
-	{
-		head = temp->next;
-		return;
-	}
-	int i;
-	for (i = 0; i < K - 2; i++)
-	{
-		temp = temp->next;
-	}
-	struct node *temp2 = temp -> next;
-	temp->next = temp2->next;
-}*/
 struct node * removeEveryKthNode(struct node *head, int K) {
 	
-	if (head == NULL||K<=0||K==1||head==NULL)
+	if (head == NULL||K<=0||head==NULL)
 		return NULL;
 	struct node *temp = head;
 	int count = 0;
@@ -45,31 +28,27 @@ struct node * removeEveryKthNode(struct node *head, int K) {
 		temp = temp->next;
 		count++;
 	}
+	//K greater than head case
 	if (K > count)
 	{
 		return head;
 	}
 	int index = 0;
-	int num1 = 1, res = 0;// num2 = 2;
+	int num1 = 1, res = 0;
 	res = K - 1;
 	int i;
+	//num2 is number of times a loop is to be run
 	int num2 = count / K;
+	temp = head;
+	if (K == 1)
+	{
+		free(head);
+		return NULL;
+	}
 	for (i = 0; i < num2; i++)
 	{
-
-		/*		while (index < count)
-				{
-				if (index == K)
-				{
-				removek(res);
-				K = K + res;
-				//	index = 0;
-				}
-				index++;
-				}
-				}*/
-
 		struct node *temp = head;
+		
 		int j;
 		for (j = 0; j < K - 2; j++)
 		{
@@ -77,6 +56,8 @@ struct node * removeEveryKthNode(struct node *head, int K) {
 		}
 		struct node *temp2 = temp->next;
 		temp->next = temp2->next;
+		free(temp2);
+		//updating value of k
 		K = K + res;
 	}
 return head;
