@@ -20,24 +20,47 @@ struct node {
 	int digit2;
 	struct node *next;
 };
-
+// to calculate power
+int power(int num1, int num2)
+{
+	int i = 0, res = 1;
+	num1 = 10;
+	if (num2 == 0)
+		return 1;
+	else if (num2 == 1)
+		return num1;
+	else
+		return (num1*power(num1, num2 - 1));
+}
 int convert_sll_2digit_to_int(struct node *head){
 	
 	struct node *temp = head;
-	int i = -1;
-	int *ptr = '\0';
-	temp = head;
-	while (temp->next!=NULL)
+	int count = 0;
+	while (temp != NULL)
 	{
-		ptr = (int *)malloc(sizeof(int));
-	
-		*(ptr + i) = temp->digit1;
-		i++;
-		ptr = (int *)malloc(sizeof(int));
-		*(ptr + i) = temp->digit2;
-		i++;
 		temp = temp->next;
+		count++;
 	}
-
-	return *ptr;
+	if (head->digit1 == 0 && head->digit2 == 0 && head->next == NULL)
+	{
+		int number = 0;
+		return number;
+	}
+	int count1 = count * 2;
+	int dummycount = count1 - 1;
+	int result = 0;
+	temp = head;
+	//traversing linked list and updating result variable accordingly
+	do
+	{
+		result=result+(temp->digit1*(power(10,dummycount)));
+		dummycount--;
+		result=result+(temp->digit2*(power(10,dummycount)));
+		dummycount--;
+		head = temp->next;
+		free(temp);
+		temp = head;
+	} while (temp!= NULL);
+	
+return result;
 }

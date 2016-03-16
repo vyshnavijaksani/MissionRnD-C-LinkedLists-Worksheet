@@ -12,77 +12,72 @@ NOTES:
 */
 
 #include <stdio.h>
-
 struct node {
 	int num;
 	struct node *next;
 };
-/*int ceil(int num)
+/*struct node *head;
+void removek(int K)
 {
-	num = num + 0.5;
-	return num;
+
+	struct node *temp = head;
+	if (K == 1)
+	{
+		head = temp->next;
+		return;
+	}
+	int i;
+	for (i = 0; i < K - 2; i++)
+	{
+		temp = temp->next;
+	}
+	struct node *temp2 = temp -> next;
+	temp->next = temp2->next;
 }*/
 struct node * removeEveryKthNode(struct node *head, int K) {
-	//struct node *temp = head;
-	//int i = 1;
-	if (head == NULL)
+	
+	if (head == NULL||K<=0||K==1||head==NULL)
 		return NULL;
-	if (K < 0)
-		return NULL;
-	if (K == 0||K==1)
-		return NULL;
+	struct node *temp = head;
 	int count = 0;
-	/*while (temp->next != NULL)
+	while (temp!= NULL)
 	{
-		count++;
 		temp = temp->next;
-	}*/
-	/*if (K > count)
+		count++;
+	}
+	if (K > count)
+	{
 		return head;
-	if (K == count)
+	}
+	int index = 0;
+	int num1 = 1, res = 0;// num2 = 2;
+	res = K - 1;
+	int i;
+	int num2 = count / K;
+	for (i = 0; i < num2; i++)
 	{
 
-	}
-	temp = head;
-	i = 1;
-	while (temp->next!=NULL)
-	{
-		while (i < ceil(K/2))
+		/*		while (index < count)
+				{
+				if (index == K)
+				{
+				removek(res);
+				K = K + res;
+				//	index = 0;
+				}
+				index++;
+				}
+				}*/
+
+		struct node *temp = head;
+		int j;
+		for (j = 0; j < K - 2; j++)
 		{
 			temp = temp->next;
-			i++;
 		}
-		temp = temp->next->next;
-		K = K * 2;
-	
+		struct node *temp2 = temp->next;
+		temp->next = temp2->next;
+		K = K + res;
 	}
-	return head;*/
-	if (head == NULL)
-		return NULL;
-
-	//int i = 1;
-	//head = temp;
-	struct node *temp = head;
-//	struct node *temp1 = head->next;
-	/*int index = 1;
-	while (temp1!=NULL)
-	{
-
-		if (index%K == 0)
-		{
-			temp->next = temp1->next;
-			temp1 = temp1->next;
-		}
-		else
-		{
-			temp = temp1;
-			temp1 = temp1->next;
-		}
-		++index;
-	}*/
-
-
-
-
-	return head;
+return head;
 }
