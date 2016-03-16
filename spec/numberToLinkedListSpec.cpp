@@ -38,8 +38,8 @@ namespace spec
 
 		TEST_METHOD(positiveNumber)
 		{
-			int num = 8348;
-			int A[] = { 8, 3, 4, 8 };
+			int num = 4348;
+			int A[] = { 4, 3, 4, 8 };
 			struct node *head = numberToLinkedList(num);
 			Assert::IsTrue(compare(A, 4, head), L"Positive number case failed.", LINE_INFO());
 		}

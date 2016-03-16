@@ -17,7 +17,72 @@ struct node {
 	int num;
 	struct node *next;
 };
-
+/*int ceil(int num)
+{
+	num = num + 0.5;
+	return num;
+}*/
 struct node * removeEveryKthNode(struct node *head, int K) {
-	return NULL;
+	//struct node *temp = head;
+	//int i = 1;
+	if (head == NULL)
+		return NULL;
+	if (K < 0)
+		return NULL;
+	if (K == 0||K==1)
+		return NULL;
+	int count = 0;
+	/*while (temp->next != NULL)
+	{
+		count++;
+		temp = temp->next;
+	}*/
+	/*if (K > count)
+		return head;
+	if (K == count)
+	{
+
+	}
+	temp = head;
+	i = 1;
+	while (temp->next!=NULL)
+	{
+		while (i < ceil(K/2))
+		{
+			temp = temp->next;
+			i++;
+		}
+		temp = temp->next->next;
+		K = K * 2;
+	
+	}
+	return head;*/
+	if (head == NULL)
+		return NULL;
+
+	//int i = 1;
+	//head = temp;
+	struct node *temp = head;
+//	struct node *temp1 = head->next;
+	/*int index = 1;
+	while (temp1!=NULL)
+	{
+
+		if (index%K == 0)
+		{
+			temp->next = temp1->next;
+			temp1 = temp1->next;
+		}
+		else
+		{
+			temp = temp1;
+			temp1 = temp1->next;
+		}
+		++index;
+	}*/
+
+
+
+
+	return head;
 }
