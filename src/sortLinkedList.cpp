@@ -35,11 +35,11 @@ struct node * sortLinkedList(struct node *head)
 	int count = 0;
 	do
 	{
-
 		temp = head;
 		count = 0;
 		while (temp->next != temp1)
 		{
+			//to check whether first node data is greater than second node data
 			if (temp->num > temp->next->num)
 			{
 				swap(temp, temp->next); count++;
