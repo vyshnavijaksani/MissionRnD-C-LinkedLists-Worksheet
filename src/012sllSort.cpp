@@ -20,80 +20,32 @@ struct node {
 	int data;
 	struct node *next;
 };
-/*void swap1(struct node *a, struct node *b)
-{
-	int temp = a->data;
-	a->data= b->data;
-	b->data = temp;
-}*/
+
 void sll_012_sort(struct node *head)
 {
-
 	struct node *temp = head;
-	//struct node *temp1 = NULL;
-	int count;
-	/*do
-	{
-		count = 0;
-		while (temp->next != temp1)
-		{
-			if (temp->data > temp->next->data)
-			{
-				swap1(temp, temp->next);
-				count++;
-			}
-			if (temp->data == temp->next->data)
-			{
-				count++;
-			}
-			temp = temp->next;
-			
-		}temp1 = temp;
-	} while (count);*/
-	int count1=0, count2=0, count3=0;
+	int counter[3] = { 0, 0, 0 };
+	//to count number of 0s and store in counter[0],1s in counter[1],2s in counter[2]
 	while (temp != NULL)
 	{
-		if (temp->data == 0)
-			count1++;
+		counter[temp->data]=counter[temp->data]+ 1;
 		temp = temp->next;
 	}
-	while (temp != NULL)
-	{
-		if (temp->data == 1)
-			count2++;
-		temp = temp->next;
-	}
-	while (temp!= NULL)
-	{
-		if (temp->data == 2)
-			count3++;
-		temp = temp->next;
-	}
+	int i = 0;
 	temp = head;
-	//struct node *ll = (struct node *)malloc(sizeof(struct node));
-	//head = ll;
-	count = 0;
-
-	while (temp->next!=NULL)
+	while (temp != NULL)
 	{
-		while (count1)
+		//to check whether counter is 0
+		if (counter[i] == 0)
+			i = i + 1;
+		//to modify content of linked list accordingly
+		else
 		{
-			temp->data = 0;
+			temp->data = i;
+			counter[i]--;
 			temp = temp->next;
-			count1--;
-		}
-		while (count2)
-		{
-			temp->data = 1;
-			temp = temp->next;
-			count2--;
-		}
-		while (count3)
-		{
-			temp->data = 2;
-			temp = temp->next;
-			count3--;
 		}
 	}
+	
 	return;
 }
